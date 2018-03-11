@@ -1,0 +1,26 @@
+{
+	"name": "AwesomeSlides",
+	"version": "1.0.0",
+	"description": "Present using hand gestures.",
+	"main": "server.js",
+	"dependencies": {
+		"httpserver": "0.3.0"
+	},
+	"devDependencies": {},
+	"scripts": {
+		"start": "node server.js",
+		"test": "node server.js"
+	},
+	"repository": {
+		"type": "",
+		"url": ""
+	},
+	"keywords": [
+		"node",
+		"js"
+	],
+	"author": "Korhan Akcura",
+	"bugs": {
+		"url": "https://github.com/kakcura/AwesomeSlides"
+	}
+}

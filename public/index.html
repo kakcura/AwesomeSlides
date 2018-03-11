@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Awesome Slides">
+	<meta name="author" content="Korhan Akcura" >
+	<title>AwesomeSlides</title>
+
+	<link rel="icon" href="images/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap3-wysihtml5.min.css"></link>
+	<link rel="stylesheet" type="text/css" href="css/prettify.css"/>
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="css/master.css">
+
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="index.html" class="navbar-brand">AwesomeSlides</a>
+		</div>
+		<!-- Collection of nav links, forms, and other content for toggling -->
+		<div id="navbarCollapse" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="index.html">Create</a></li>
+				<li><a href="clips.html">Load</a></li>
+			</ul>
+			<form class="navbar-form navbar-right">
+				<div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
+					<div class="btn-group">
+						<a class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+							title="Font"><i class="fa fa-font"></i><b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+						</ul>
+					</div>
+					<div class="btn-group">
+						<a class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+							title="Font Size"><i class="fa fa-text-height"></i>&nbsp;<b
+							class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a data-edit="fontSize 5" class="fs-Five">Huge</a></li>
+							<li><a data-edit="fontSize 3" class="fs-Three">Normal</a></li>
+							<li><a data-edit="fontSize 1" class="fs-One">Small</a></li>
+						</ul>
+					</div>
+					<div class="btn-group">
+						<a class="btn btn-default" data-edit="bold" title="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
+						<a class="btn btn-default" data-edit="italic" title="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
+						<a class="btn btn-default" data-edit="strikethrough" title="Strikethrough"><i class="fa fa-strikethrough"></i></a>
+						<a class="btn btn-default" data-edit="underline" title="Underline (Ctrl/Cmd+U)"><i class="fa fa-underline"></i></a>
+					</div>
+					<div class="btn-group">
+						<a class="btn btn-default" data-edit="insertunorderedlist" title="Bullet list"><i class="fa fa-list-ul"></i></a>
+						<a class="btn btn-default" data-edit="insertorderedlist" title="Number list"><i class="fa fa-list-ol"></i></a>
+						<a class="btn btn-default" data-edit="outdent" title="Reduce indent (Shift+Tab)"><i class="fa fa-outdent"></i></a>
+						<a class="btn btn-default" data-edit="indent" title="Indent (Tab)"><i class="fa fa-indent"></i></a>
+					</div>
+					<div class="btn-group">
+						<a class="btn btn-default" data-edit="justifyleft" title="Align Left (Ctrl/Cmd+L)"><i class="fa fa-align-left"></i></a>
+						<a class="btn btn-default" data-edit="justifycenter" title="Center (Ctrl/Cmd+E)"><i class="fa fa-align-center"></i></a>
+						<a class="btn btn-default" data-edit="justifyright" title="Align Right (Ctrl/Cmd+R)"><i class="fa fa-align-right"></i></a>
+						<a class="btn btn-default" data-edit="justifyfull" title="Justify (Ctrl/Cmd+J)"><i class="fa fa-align-justify"></i></a>
+					</div>
+					<div class="btn-group">
+						<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Hyperlink"><i class="fa fa-link"></i></a>
+						<div class="dropdown-menu input-append">
+							<input placeholder="URL" type="text" data-edit="createLink" />
+							<button class="btn" type="button">Add</button>
+						</div>
+					</div>
+					<div class="btn-group">
+						<a class="btn btn-default" data-edit="unlink" title="Remove Hyperlink"><i class="fa fa-unlink"></i></a>
+						<span class="btn btn-default" title="Insert picture (or just drag & drop)" id="pictureBtn"> <i class="fa fa-picture-o"></i>
+							<input class="imgUpload" type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
+						</span>
+					</div>
+					<div class="btn-group">
+						<a class="btn btn-default" data-edit="undo" title="Undo (Ctrl/Cmd+Z)"><i class="fa fa-undo"></i></a>
+						<a class="btn btn-default" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
+					</div>
+					<input class="pull-right" type="text" data-edit="inserttext" id="voiceBtn" />
+				</div>
+			</form>
+		</div>
+	</nav>
+
+	<!-- Page Content -->
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div id="alerts"></div>
+				<div id="editor" style="height:50px" class="lead" data-placeholder="Go ahead&hellip;"></div>			
+			<div>
+			<div id="disp"><canvas id="comp"></canvas></div>
+			<video id="video" autoplay width="300" style="display:none"></video>
+			<canvas id="canvas" style="width:300px;display:none;"></canvas>
+		</div>
+	</div>
+
+
+
+	<div class="navbar navbar-inverse navbar-fixed-bottom">
+		<div class="container">
+			<p class="navbar-text pull-left">© 2018 - AwesomeSlides</p>
+		</div>
+	</div>
+
+	<!-- Load JS at the end -->
+	<script type="text/javascript" src="js/libs/jquery-3.1.1.min.js"></script>
+	<script src="js/libs/jquery.hotkeys.js"></script>
+	<script type="text/javascript" src="js/libs/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/libs/bootstrap-filestyle.min.js"></script>
+	<script src="js/libs/prettify.js"></script>
+	<script src="js/libs/bootstrap-wysiwyg.min.js"></script>
+	<script type="text/javascript" src="js/slides.js"></script>
+	<script type="text/javascript" src="js/hand_gesture.js"></script>
+</body>
+</html>
