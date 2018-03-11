@@ -204,11 +204,11 @@ function handledown(){
 			//console.log(good,davg)
 			if(dx<-movethresh){
 				console.log('right')
-				//Reveal.navigateRight()
+				nextSlide();
 			}
 			else if(dx>movethresh){
 				console.log('left')
-				//Reveal.navigateLeft()
+				previousSlide();
 			}
 			state=2
 			break

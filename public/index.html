@@ -34,6 +34,8 @@
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="index.html">Create</a></li>
 				<li><a href="clips.html">Load</a></li>
+				<li><a href="#" onclick="previousSlide();" class="list-group-item list-group-item-warning">Previous</a></li>
+				<li><a href="#" onclick="nextSlide();" class="list-group-item list-group-item-success">Next</a></li>
 			</ul>
 			<form class="navbar-form navbar-right">
 				<div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
@@ -98,17 +100,22 @@
 
 	<!-- Page Content -->
 	<div class="container">
+		<div id="s0" style="display:none;">
+			<div id="template" style="height:50px" class="lead" data-placeholder="Go ahead&hellip;"></div>
+		</div>
 		<div class="row">
 			<div class="col-xs-12">
 				<div id="alerts"></div>
-				<div id="editor" style="height:50px" class="lead" data-placeholder="Go ahead&hellip;"></div>			
-			<div>
-			<div id="disp"><canvas id="comp"></canvas></div>
-			<video id="video" autoplay width="300" style="display:none"></video>
-			<canvas id="canvas" style="width:300px;display:none;"></canvas>
+			</div>
+			<div id="slides" class="col-xs-12">
+				<div id="editor" style="height:50px" class="lead" data-placeholder="Go ahead&hellip;"></div>
+			</div>
 		</div>
-	</div>
 
+		<div id="disp" style="display: none;"><canvas id="comp"></canvas></div>
+		<video id="video" autoplay width="300" style="display:none"></video>
+		<canvas id="canvas" style="width:300px;display:none;"></canvas>
+	</div>
 
 
 	<div class="navbar navbar-inverse navbar-fixed-bottom">
@@ -121,7 +128,6 @@
 	<script type="text/javascript" src="js/libs/jquery-3.1.1.min.js"></script>
 	<script src="js/libs/jquery.hotkeys.js"></script>
 	<script type="text/javascript" src="js/libs/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/libs/bootstrap-filestyle.min.js"></script>
 	<script src="js/libs/prettify.js"></script>
 	<script src="js/libs/bootstrap-wysiwyg.min.js"></script>
 	<script type="text/javascript" src="js/slides.js"></script>

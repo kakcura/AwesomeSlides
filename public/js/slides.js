@@ -42,21 +42,50 @@ $(function() {
 				$('#voiceBtn').hide();
 			}
 		};
-	function showErrorAlert (reason, detail)
-	{
-		var msg='';
-		if (reason==='unsupported-file-type')
-		{
-			msg = "Unsupported format " + detail;
-		}
-		else
-		{
-			console.log("error uploading file", reason, detail);
-		}
-		$('<div class="alert"> <button type="button" class="close" data-dismiss="alert">&times;</button>'+ 
-			'<strong>File upload error</strong> '+msg+' </div>').prependTo('#alerts');
-	};
+
 	initToolbarBootstrapBindings();  
 	$('#editor').wysiwyg({ fileUploadError: showErrorAlert} );
 	window.prettyPrint && prettyPrint();
 });
+
+function showErrorAlert (reason, detail)
+{
+	var msg='';
+	if (reason==='unsupported-file-type')
+	{
+		msg = "Unsupported format " + detail;
+	}
+	else
+	{
+		console.log("error uploading file", reason, detail);
+	}
+	$('<div class="alert"> <button type="button" class="close" data-dismiss="alert">&times;</button>'+ 
+		'<strong>File upload error</strong> '+msg+' </div>').prependTo('#alerts');
+};
+
+var slide_count = 1;
+var current_slide = 1;
+
+function nextSlide() {
+	if (slide_count === current_slide) {
+		$('#editor').attr('id', 's'+current_slide).hide();
+		$("#template").clone().attr("id", "editor").show().appendTo( "#slides" );
+		$('#editor').wysiwyg({ fileUploadError: showErrorAlert} );
+		slide_count++;
+		current_slide++;
+	} else {
+		$('#editor').attr('id', 's'+current_slide).hide();
+		current_slide++;
+		$('#s'+current_slide).attr('id', 'editor').show();
+		$('#editor').wysiwyg({ fileUploadError: showErrorAlert} );
+	}
+};
+
+function previousSlide() {
+	if(current_slide !== 1){
+		$('#editor').attr('id', 's'+current_slide).hide();
+		current_slide--;
+		$('#s'+current_slide).attr('id', 'editor').show();
+		$('#editor').wysiwyg({ fileUploadError: showErrorAlert} );
+	}
+};
